@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>this is home page</title>
+</head>
+<body>
+	<section>
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-6 offset-md-3">
+
+                    <div class="my-card mt-1">
+                        <form id="login-form" class="form" th:action="@{/dologin}" action="#" method="post">
+
+                            <h3 class="text-center">Login</h3>
+
+                            <div th:if="${param.error}" class="alert alert-danger">
+                                Invalid username and password
+                            </div>
+
+                            <div th:if="${param.logout}" class="alert alert-success">
+                                You have been logged out
+                            </div>
+
+                            <div th:if="${param.change}" class="alert alert-success">
+                                <p th:text="${param.change}"></p>
+                            </div>
+
+                            <!-- email field  -->
+                            <div class="form-group">
+                                <label for="email_field">Your Email</label>
+                                <input name="username" type="email" class="form-control" id="email_field"
+                                       aria-describedby="emailHelp" placeholder="Enter here" required/>
+                            </div>
+
+                            <!-- password field  -->
+
+                            <div class="form-group">
+                                <label for="password_field">Your Password</label>
+                                <input name="password" type="password" class="form-control"
+                                       id="password_field" aria-describedby="emailHelp" placeholder="Enter here" required/>
+                                <a href="/signup/"  class="">Register here</a>
+                                <a href="/forgot/"  class="d-block">Forgot Password</a>
+                            </div>
+
+<!--                            <div id="register-link" class="text-left">-->
+<!--                            </div>-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>-->
+<!--                                <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">-->
+<!--                            </div>-->
+                            <div class="container text-center">
+                                <button type="submit" class="btn btn-outline-primary">Submit</button>
+                            </div>
+
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+	</section>
+</body>
+</html>

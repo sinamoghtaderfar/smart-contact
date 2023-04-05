@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="base::layout(~{::section})">
+<head>
+  <meta charset="UTF-8" />
+  <title>this is home page</title>
+</head>
+<body>
+<section>
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-6 offset-md-3">
+
+        <div class="my-card mt-1" style="height: 250px">
+            <!-- message box  -->
+            <div th:if="${session.message}" class="container">
+
+                <div  class="alert alert-danger my-2 text-center" role="alert">
+                    <span th:text="${session.message}"></span>
+                </div>
+                <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+            </div>
+<!--            email form-->
+          <h3 class="text-center m-3">Your registerd email</h3>
+
+            <form action="" th:action="@{/send-opt}" method="post">
+                <div class="form-group">
+                    <!-- email field  -->
+                    <div class="form-group">
+                        <label for="email_field">Your Email</label>
+                        <input name="email" type="email" class="form-control" id="email_field"
+                               aria-describedby="emailHelp" placeholder="Enter here" required/>
+                    </div>
+                </div>
+
+
+                <div class="container text-center">
+                    <button type="submit" class="btn btn-outline-warning">Send OTP</button>
+                </div>
+
+            </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>
